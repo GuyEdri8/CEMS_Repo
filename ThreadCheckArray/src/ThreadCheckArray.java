@@ -51,6 +51,7 @@ public class ThreadCheckArray implements Runnable
 	}
 
 	public void run() {
+		
 		if (array.length != 1)
 			if (Thread.currentThread().getName().equals("thread1"))
 				rec(array.length-1, b - array[array.length - 1]);

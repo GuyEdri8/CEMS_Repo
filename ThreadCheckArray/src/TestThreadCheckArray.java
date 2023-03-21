@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 public class TestThreadCheckArray {
 	public static void main(String[] args) {
+		long startTime;
+		long endTime;
+		long elapsedTime;
 		try (Scanner input = new Scanner(System.in)) {
 			Thread thread1, thread2;
 			System.out.println("Enter array size");
@@ -16,7 +19,7 @@ public class TestThreadCheckArray {
 			num = input.nextInt();
 			
 			SharedData sd = new SharedData(array, num);
-			
+			startTime = System.currentTimeMillis();
 			thread1 = new Thread(new ThreadCheckArray(sd), "thread1");
 			thread2 = new Thread(new ThreadCheckArray(sd), "thread2");
 			thread1.start();
@@ -65,6 +68,9 @@ public class TestThreadCheckArray {
 				else
 					System.out.print("0    ");	
 			}
+			endTime = System.currentTimeMillis();
+			elapsedTime = endTime - startTime;
+			System.out.println("Time in Miliseconds: " + elapsedTime);
 		}
 	}
 
